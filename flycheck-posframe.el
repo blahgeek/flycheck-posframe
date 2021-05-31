@@ -92,6 +92,18 @@
   :type 'string
   :package-version '(flycheck-posframe . "0.1"))
 
+(defcustom flycheck-posframe-timeout 0
+  "Hide posframe after certain delay of seconds."
+  :group 'flycheck-posframe
+  :type 'float
+  :package-version '(flycheck-posframe . "0.8"))
+
+(defcustom flycheck-posframe-width 0.6
+  "Maxium width of posframe, as the ratio of window width."
+  :group 'flycheck-posframe
+  :type 'float
+  :package-version '(flycheck-posframe . "0.8"))
+
 (defface flycheck-posframe-face
   '((t :inherit default))
   "The default face to use for displaying messages in posframe."
@@ -221,6 +233,8 @@ Only the `foreground' is used in this face."
        :position (point)
        :internal-border-width flycheck-posframe-border-width
        :internal-border-color (face-foreground 'flycheck-posframe-border-face nil t)
+       :timeout flycheck-posframe-timeout
+       :width (truncate (* flycheck-posframe-width (window-width)))
        :poshandler poshandler
        :hidehandler #'posframe-hide))
     (dolist (hook flycheck-posframe-maybe-hide-posframe-hooks)
