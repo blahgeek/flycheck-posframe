@@ -235,8 +235,7 @@ Only the `foreground' is used in this face."
        :internal-border-color (face-foreground 'flycheck-posframe-border-face nil t)
        :timeout flycheck-posframe-timeout
        :width (truncate (* flycheck-posframe-width (window-width)))
-       :poshandler poshandler
-       :hidehandler #'posframe-hide))
+       :poshandler poshandler))
     (dolist (hook flycheck-posframe-maybe-hide-posframe-hooks)
       (add-hook hook #'flycheck-posframe-maybe-hide-posframe))
     (dolist (hook flycheck-posframe-hide-posframe-hooks)
